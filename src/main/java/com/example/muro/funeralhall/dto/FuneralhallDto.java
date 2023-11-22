@@ -4,6 +4,7 @@ import lombok.Getter;
 
 @Getter
 public class FuneralhallDto {
+    //funeralhallDTO
     private Long fh_id;
     private String fh_name;
     private String fh_location;
