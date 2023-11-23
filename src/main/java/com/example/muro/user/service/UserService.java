@@ -16,10 +16,10 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public void signUp(UserSignUpDto UserSignUpDto) throws Exception{
+    /*public void signUp(UserSignUpDto UserSignUpDto) throws Exception{
         if (userRepository.findByNickname(UserSignUpDto.getNickname()).isPresent()) {
             throw new Exception("이미 존재하는 닉네임입니다.");
         }
-    }
+    }*/
 
 }

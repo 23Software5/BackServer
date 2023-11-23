@@ -19,7 +19,7 @@ public class UserController {
     private final UserRepository userRepository;
     private final UserService userService;
 
-   // @PostMapping({"/sign-up"})
+   // @PostMapping({"/newuser"})
     //public String signUp(@RequestBody UserSignUpDto userSignUpDto) throws Exception {
         //this.userService.signUp(userSignUpDto);
     //    return "회원가입 성공";
