@@ -6,27 +6,40 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Entity
-@Getter @Setter
 public class User {
     @Id
-    @GeneratedValue(
-            strategy = GenerationType.IDENTITY
-    )
+    @GeneratedValue
     @Column(name = "user_id")
     private Long userid;
     private String email;
     private String nickname;
     private String password;
 
-    protected User() {
+    public User(){
+
+    }
+    public Long getId() {
+        return this.userid;
     }
 
-    public User(final Long userID, final String email, final String nickname, final String password){
-        this.userid = userID;
+    public String getEmail() {
+        return this.email;
+    }
+    public String getNickname() {
+        return this.nickname;
+    }
+    public String getPassword() {
+        return this.password;
+    }
+
+
+
+    /*public User(final Long userID, final String email, final String nickname, final String password){
+        this.id = userID;
         this.email = email;
         this.nickname = nickname;
         this.password = password;
-    }
+    }*/
 
 
 
