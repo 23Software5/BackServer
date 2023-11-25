@@ -1,5 +1,5 @@
 // Review.java
-package com.example.muro.reivew.domain;
+package com.example.muro.review.domain;
 
 import com.example.muro.funeralhall.domain.Funeralhall;
 import com.example.muro.user.domain.User;

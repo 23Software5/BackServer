@@ -1,5 +1,5 @@
 // ReviewDto.java
-package com.example.muro.reivew.dto;
+package com.example.muro.review.dto;
 
 import lombok.Getter;
 import lombok.Setter;
