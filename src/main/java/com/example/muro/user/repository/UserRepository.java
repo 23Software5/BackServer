@@ -70,3 +70,4 @@ public class UserRepository{
     //Optional<User> findByNickname(String nickname);
 
 }
+//야호오
