@@ -1,38 +1,51 @@
 package com.example.muro.user.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.persistence.*;
 
 @Entity
 public class User {
     @Id
-    @GeneratedValue(
-            strategy = GenerationType.IDENTITY
-    )
-    private Long userId;
+    @GeneratedValue
+    @Column(name = "user_id")
+    private Long userid;
     private String email;
     private String nickname;
     private String password;
-    public Long getUserId() {
-        return this.userId;
+
+    //private String phoneNumber;
+
+    public User(){
+
+    }
+
+    /*@Builder
+    public User(Long userid,String email,  String nickname, String password) {
+        this.userid = userid;
+        this.nickname = nickname;
+        this.email = email;
+        this.password = password;
+
+    }*/
+
+    public Long getId() {
+        return this.userid;
     }
 
     public String getEmail() {
         return this.email;
     }
-
-    public String getPassword() {
-        return this.password;
-    }
-
     public String getNickname() {
         return this.nickname;
     }
-
-    public void setUserId(final Long userId) {
-        this.userId = userId;
+    public String getPassword() {
+        return this.password;
+    }
+    public void setUserId(final Long userid) {
+        this.userid = userid;
     }
 
     public void setEmail(final String email) {
@@ -47,15 +60,15 @@ public class User {
         this.nickname = nickname;
     }
 
-    protected User() {
-    }
 
-    public User(final Long userID, final String email, final String nickname, final String password){
-        this.userId = userID;
+
+
+    /*public User(final Long userID, final String email, final String nickname, final String password){
+        this.id = userID;
         this.email = email;
         this.nickname = nickname;
         this.password = password;
-    }
+    }*/
 
 
 
