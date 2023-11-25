@@ -17,6 +17,14 @@ public class UserRepository{
    public void save(User user){
        em.persist(user);
    }
+    public void delete(Long user) {
+        if (user != null) {
+            em.remove(user);
+        } else {
+            throw new IllegalArgumentException("해당 ID의 사용자를 찾을 수 없습니다.");
+        }
+    }
+
 
    public User findOne(Long id){
        return em.find(User.class, id);
@@ -29,10 +37,12 @@ public class UserRepository{
    }
 
    public List<User> findByNickname(String nickname){
-       return em.createQuery("select m from Member m where m.nickname = :nickname", User.class)
+       return em.createQuery("select m from User m where m.nickname = :nickname", User.class)
                .setParameter("nickname",nickname)
                .getResultList();
    }
+
+
 
     //Optional<User> findByNickname(String nickname);
 

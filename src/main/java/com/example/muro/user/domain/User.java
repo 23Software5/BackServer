@@ -1,5 +1,6 @@
 package com.example.muro.user.domain;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,9 +16,20 @@ public class User {
     private String nickname;
     private String password;
 
+    private String phoneNumber;
+
     public User(){
 
     }
+
+    @Builder
+    public User(Long userid, String password, String email, String phoneNumber) {
+        this.userid = userid;
+        this.password = password;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+    }
+
     public Long getId() {
         return this.userid;
     }
@@ -31,6 +43,22 @@ public class User {
     public String getPassword() {
         return this.password;
     }
+    public void setUserId(final Long userid) {
+        this.userid = userid;
+    }
+
+    public void setEmail(final String email) {
+        this.email = email;
+    }
+
+    public void setPassword(final String password) {
+        this.password = password;
+    }
+
+    public void setNickname(final String nickname) {
+        this.nickname = nickname;
+    }
+
 
 
 
