@@ -30,6 +30,7 @@ public class UserRepository{
        return em.find(User.class, id);
    }
 
+
    public List<User> findAll(){
        return em.createQuery("select m from User m", User.class)
                .getResultList();
@@ -41,6 +42,17 @@ public class UserRepository{
                .setParameter("nickname",nickname)
                .getResultList();
    }
+
+    public User findByUserEmail(String email){
+        List<User> users = em.createQuery("SELECT u FROM User u WHERE u.email = :email", User.class)
+                .setParameter("email", email)
+                .getResultList();
+
+        return users.isEmpty() ? null : users.get(0);
+    }
+        /*public User findByUserEmail(String email){
+        return em.find(User.class, email);
+    }*/
 
 
 

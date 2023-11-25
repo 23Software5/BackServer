@@ -1,5 +1,6 @@
 package com.example.muro.user.controller;
 
+import com.example.muro.user.domain.LoginRequest;
 import com.example.muro.user.domain.User;
 import com.example.muro.user.dto.UserDto;
 import com.example.muro.user.dto.UserSignUpDto;
@@ -20,6 +21,8 @@ import java.util.List;
 public class UserController {
     private final UserRepository userRepository;
     private final UserService userService;
+    @Autowired
+    private AuthenticationService authService;
     @Autowired
     public UserController(final UserRepository userRepository, final UserService userService) {
         this.userRepository = userRepository;
@@ -46,6 +49,32 @@ public class UserController {
         userService.deleteUser(userId);
         return "회원 탈퇴 성공";
     }
+
+    //3)회원 조회(마이페이지)
+    @GetMapping("/settings/{userId}")
+    public User getUserById(@PathVariable Long userId) {
+        return userService.getUserById(userId);
+    }
+
+    //4)로그인
+    @PostMapping("/login")
+    public String login(@RequestBody LoginRequest loginRequest) {
+        String userEmail = loginRequest.getEmail();
+        String password = loginRequest.getPassword();
+
+        // 사용자 정보 확인
+        User user = userRepository.findByUserEmail(userEmail);
+        if (user != null && user.getPassword().equals(password)) {
+            //인증 토큰은 다시...
+            //String token = authService.authenticateUser(loginRequest.getUsername(), loginRequest.getPassword());
+
+
+            return "로그인 성공";
+        } else {
+            return "로그인 실패";
+        }
+    }
+
 
 
     //public String signUp(@RequestBody UserSignUpDto userSignUpDto) throws Exception {
