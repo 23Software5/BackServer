@@ -1,7 +1,6 @@
 // Review.java
 package com.example.muro.review.domain;
 
-import com.example.muro.funeralhall.domain.Funeralhall;
 import com.example.muro.user.domain.User;
 import lombok.Getter;
 import lombok.Setter;
@@ -24,9 +23,9 @@ public class Review {
 //    @JoinColumn(name = "fhrequest_id")
 //    private FuneralRequest funeralRequest;
 
-    @ManyToOne
+    /*@ManyToOne
     @JoinColumn(name = "fh_id")
-    private Funeralhall funeralhall;
+    private Funeralhall funeralhall;*/
 
     @ManyToOne
     @JoinColumn(name = "user_id")
