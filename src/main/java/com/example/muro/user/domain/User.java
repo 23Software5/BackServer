@@ -16,19 +16,20 @@ public class User {
     private String nickname;
     private String password;
 
-    private String phoneNumber;
+    //private String phoneNumber;
 
     public User(){
 
     }
 
-    @Builder
-    public User(Long userid, String password, String email, String phoneNumber) {
+    /*@Builder
+    public User(Long userid,String email,  String nickname, String password) {
         this.userid = userid;
-        this.password = password;
+        this.nickname = nickname;
         this.email = email;
-        this.phoneNumber = phoneNumber;
-    }
+        this.password = password;
+
+    }*/
 
     public Long getId() {
         return this.userid;

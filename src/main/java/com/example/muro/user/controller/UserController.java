@@ -2,7 +2,7 @@ package com.example.muro.user.controller;
 
 import com.example.muro.user.domain.LoginRequest;
 import com.example.muro.user.domain.User;
-import com.example.muro.user.dto.UserDto;
+//import com.example.muro.user.dto.UserDto;
 import com.example.muro.user.dto.UserSignUpDto;
 import com.example.muro.user.repository.UserRepository;
 import com.example.muro.user.service.UserService;
@@ -21,8 +21,8 @@ import java.util.List;
 public class UserController {
     private final UserRepository userRepository;
     private final UserService userService;
-    @Autowired
-    private AuthenticationService authService;
+    //@Autowired
+    //private AuthenticationService authService;
     @Autowired
     public UserController(final UserRepository userRepository, final UserService userService) {
         this.userRepository = userRepository;
@@ -36,9 +36,15 @@ public class UserController {
 
     //1)회원가입
     @PostMapping("/newuser")//@Valid를 사용하면 커맨드 객체(사용자가 입력한 값을 담은 클래스)에 대한 검증을 스프링이 수행한다.
-    public String create(@Valid UserSignUpDto user){
+    public String create(@RequestBody UserSignUpDto userDto){
+        //System.out.println(user);
+        //userService.insertUser(user);
+        User user = new User();
+        user.setEmail(userDto.getEmail());
+        user.setNickname(userDto.getNickname());
+        user.setPassword(userDto.getPassword());
 
-        userService.insertUser(user);
+        userService.join(user);
 
         return "redirect:/";
     }
