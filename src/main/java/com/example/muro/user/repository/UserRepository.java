@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 import java.util.Optional;
@@ -17,11 +18,11 @@ public class UserRepository{
    public void save(User user){
        em.persist(user);
    }
-    public void delete(Long user) {
+    public void delete(User user) {
         if (user != null) {
             em.remove(user);
         } else {
-            throw new IllegalArgumentException("해당 ID의 사용자를 찾을 수 없습니다.");
+            throw new IllegalArgumentException("해당 사용자를 찾을 수 없습니다.");
         }
     }
 
@@ -29,6 +30,7 @@ public class UserRepository{
    public User findOne(Long id){
        return em.find(User.class, id);
    }
+
 
    public List<User> findAll(){
        return em.createQuery("select m from User m", User.class)
@@ -41,6 +43,27 @@ public class UserRepository{
                .setParameter("nickname",nickname)
                .getResultList();
    }
+    public User findByUserEmail(String email) {
+        try {
+            return em.createQuery("SELECT u FROM User u WHERE u.email = :email", User.class)
+                    .setParameter("email", email)
+                    .getSingleResult();
+        } catch (NoResultException ex) {
+            return null;
+        }
+    }
+
+
+//    public User findByUserEmail(String email){
+//        List<User> users = em.createQuery("SELECT u FROM User u WHERE u.email = :email", User.class)
+//                .setParameter("email", email)
+//                .getResultList();
+//
+//        return users.isEmpty() ? null : users.get(0);
+//    }
+        /*public User findByUserEmail(String email){
+        return em.find(User.class, email);
+    }*/
 
 
 
