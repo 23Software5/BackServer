@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import java.util.List;
 import java.util.Optional;
 
@@ -45,13 +46,22 @@ public class UserRepository{
    }
     public User findByUserEmail(String email) {
         try {
+            TypedQuery<User> query = em.createQuery("SELECT u FROM User u WHERE u.email = :email", User.class);
+            query.setParameter("email", email);
+            return query.getSingleResult();
+        } catch (NoResultException ex) {
+            return null;
+        }
+    }
+    /*public User findByUserEmail(String email) {
+        try {
             return em.createQuery("SELECT u FROM User u WHERE u.email = :email", User.class)
                     .setParameter("email", email)
                     .getSingleResult();
         } catch (NoResultException ex) {
             return null;
         }
-    }
+    }*/
 
 
 //    public User findByUserEmail(String email){

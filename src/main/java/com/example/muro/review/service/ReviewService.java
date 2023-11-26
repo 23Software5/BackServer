@@ -16,10 +16,11 @@ public class ReviewService {
 
     public Review createReview(String content) {
         Review review = new Review();
-        review.setReviewText(content);
+        /*review.setReviewText(content);
         // startscore에 디폴트 값 또는 사용자 입력값을 설정해야 합니다.
         review.setStartscore(0); // 예시로 0으로 설정했습니다.
-        return reviewRepository.save(review);
+        return reviewRepository.save(review);*/
+        return review;
     }
 
     public Review getReviewById(Long id) {

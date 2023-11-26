@@ -2,15 +2,15 @@ package com.example.muro.user.domain;
 
 
 public class LoginRequest {
-    private String useremail;
+    private String email;
     private String password;
 
     public String getEmail() {
-        return useremail;
+        return email;
     }
 
-    public void setUsername(String useremail) {
-        this.useremail = useremail;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {

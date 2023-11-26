@@ -44,8 +44,6 @@ public class UserService {
         System.out.println(user.getNickname());
         System.out.println(user.getEmail());
 
-
-
         return "회원가입 성공";
 
     }
@@ -68,9 +66,6 @@ public class UserService {
         }
     }
 
-
-
-
     private void validateDuplicateUser(User user) {
         //EXCEPTION
         List<User> findUsers = userRepository.findByNickname(user.getNickname());
@@ -78,7 +73,6 @@ public class UserService {
             throw new IllegalStateException("이미 존재하는 회원입니다.");
         }
     }
-
 
     public List<User> findUsers(){
         return userRepository.findAll();
