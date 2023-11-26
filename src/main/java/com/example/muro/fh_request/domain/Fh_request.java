@@ -21,7 +21,7 @@ public class Fh_request {
     private User User;
 
     @OneToOne(mappedBy = "fh_request")
-    private Review review;
+    private Reviews reviews;
 
     private FhRequestStatus status; //작성상태 [REQUEST,REVIEW]
 

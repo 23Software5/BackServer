@@ -5,10 +5,6 @@ import lombok.Getter;
 
 @Getter
 public class FuneralhallDto {
-<<<<<<< HEAD
-    //funeralhallDTO
-=======
->>>>>>> 9989690db36037d94e7d2667d62d1a5c0abb16fa
 
     private Long fh_id;
     private String fh_name;

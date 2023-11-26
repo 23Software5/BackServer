@@ -7,7 +7,7 @@ import javax.persistence.*;
 
 @Entity
 @Getter @Setter
-public class Review {
+public class Reviews {
     @Id @GeneratedValue
     private Long review_id;
     @OneToOne
