@@ -7,6 +7,7 @@ import lombok.Getter;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import java.util.Date;
 
 @Getter
 public class UserDto {
@@ -18,6 +19,7 @@ public class UserDto {
     private String nickname;
 
     private String password;
+
 
     /*@NotBlank(message = "휴대폰 번호를 입력해주세요.")
     @Pattern(regexp = "(01[016789])(\\d{3,4})(\\d{4})", message = "올바른 휴대폰 번호를 입력해주세요.")
