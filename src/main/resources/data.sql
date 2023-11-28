@@ -1,0 +1,2 @@
+INSERT INTO user (USER_ID,EMAIL,NICKNAME,PASSWORD) VALUES (1,'example@example.com', 'user123', 'hashed_password');
+INSERT INTO FUNERALHALL (FH_ID,FH_INTRO,FH_LINK ,FH_LOCATION ,FH_NAME ,FH_TELEPHONE ) VALUES (2,'hihi', 'https://imyourwish.tistory.com/', '서울시 송파구 위례순환로','소원이네 집','01051597233');
