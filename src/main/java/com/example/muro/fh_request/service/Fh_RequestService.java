@@ -1,5 +1,6 @@
 package com.example.muro.fh_request.service;
 
+import com.example.muro.fh_request.domain.FhRequestStatus;
 import com.example.muro.fh_request.domain.Fh_Request;
 import com.example.muro.fh_request.dto.Fh_RequestDto;
 import com.example.muro.fh_request.repository.Fh_RequestRepository;
@@ -42,6 +43,15 @@ public class Fh_RequestService {
 
         // 저장 로직 - Repository 사용
         fhRequestRepository.createFhRequest(fhRequest);
+    }
+
+    public void updateFhRequestStatus(Long requestId, FhRequestStatus newStatus) {
+        Optional<Fh_Request> optionalFhRequest = fhRequestRepository.findById(requestId);
+
+        optionalFhRequest.ifPresent(fhRequest -> {
+            fhRequest.setStatus(newStatus);
+            fhRequestRepository.createFhRequest(fhRequest); // 혹은 update 메서드 활용
+        });
     }
 
     public Optional<Fh_Request> getFhRequestById(Long id) {
