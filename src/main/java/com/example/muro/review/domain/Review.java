@@ -2,7 +2,7 @@
 package com.example.muro.review.domain;
 
 import com.example.muro.funeralhall.domain.Funeralhall;
-import com.example.muro.user.domain.User;
+import com.example.muro.user.domain.Users;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -30,7 +30,7 @@ public class Review {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private User user;
+    private Users user;
 
     @NotBlank
     @Column(name = "review_text")

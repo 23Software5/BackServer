@@ -1,7 +1,6 @@
 package com.example.muro.user.repository;
 
-import com.example.muro.user.domain.User;
-import org.springframework.data.jpa.repository.JpaRepository;
+import com.example.muro.user.domain.Users;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -9,17 +8,16 @@ import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import java.util.List;
-import java.util.Optional;
 
 @Repository
 public class UserRepository{
    @PersistenceContext
    private EntityManager em;
 
-   public void save(User user){
+   public void save(Users user){
        em.persist(user);
    }
-    public void delete(User user) {
+    public void delete(Users user) {
         if (user != null) {
             em.remove(user);
         } else {
@@ -28,25 +26,25 @@ public class UserRepository{
     }
 
 
-   public User findOne(Long id){
-       return em.find(User.class, id);
+   public Users findOne(Long id){
+       return em.find(Users.class, id);
    }
 
 
-   public List<User> findAll(){
-       return em.createQuery("select m from User m", User.class)
+   public List<Users> findAll(){
+       return em.createQuery("select m from User m", Users.class)
                .getResultList();
 
    }
 
-   public List<User> findByNickname(String nickname){
-       return em.createQuery("select m from User m where m.nickname = :nickname", User.class)
+   public List<Users> findByNickname(String nickname){
+       return em.createQuery("select m from User m where m.nickname = :nickname", Users.class)
                .setParameter("nickname",nickname)
                .getResultList();
    }
-    public User findByUserEmail(String email) {
+    public Users findByUserEmail(String email) {
         try {
-            TypedQuery<User> query = em.createQuery("SELECT u FROM User u WHERE u.email = :email", User.class);
+            TypedQuery<Users> query = em.createQuery("SELECT u FROM User u WHERE u.email = :email", Users.class);
             query.setParameter("email", email);
             return query.getSingleResult();
         } catch (NoResultException ex) {

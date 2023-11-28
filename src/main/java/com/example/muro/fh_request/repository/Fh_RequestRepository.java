@@ -1,6 +1,6 @@
 package com.example.muro.fh_request.repository;
 import com.example.muro.fh_request.domain.Fh_Request;
-import com.example.muro.user.domain.User;
+import com.example.muro.user.domain.Users;
 import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -22,7 +22,7 @@ public class Fh_RequestRepository {
         Fh_Request request = entityManager.find(Fh_Request.class, id);
         return Optional.ofNullable(request);
     }
-    public User findUserById(Long userId) {
-        return entityManager.find(User.class, userId);
+    public Users findUserById(Long userId) {
+        return entityManager.find(Users.class, userId);
     }
 }

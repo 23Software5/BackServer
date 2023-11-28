@@ -1,7 +1,6 @@
 package com.example.muro.fh_request.dto;
 
 import com.example.muro.funeralhall.domain.Funeralhall;
-import com.example.muro.user.domain.User;
 
 import java.util.Date;
 

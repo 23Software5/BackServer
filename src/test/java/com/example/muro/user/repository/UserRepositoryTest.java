@@ -1,12 +1,11 @@
 package com.example.muro.user.repository;
 
-import com.example.muro.user.domain.User;
+import com.example.muro.user.domain.Users;
 import com.example.muro.user.service.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,7 +24,7 @@ public class UserRepositoryTest {
     @Test
     public void SignUpTest() throws Exception{
         //given
-        User user = new User();
+        Users user = new Users();
         user.setNickname("SOWON");
 
         //when
@@ -40,9 +39,9 @@ public class UserRepositoryTest {
 
     public void SameUserTest() throws Exception{
         //given
-        User user1 = new User();
+        Users user1 = new Users();
         user1.setNickname("SOWON");
-        User user2 = new User();
+        Users user2 = new Users();
         user2.setNickname("SOWON");
 
         //when

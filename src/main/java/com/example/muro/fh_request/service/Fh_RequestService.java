@@ -3,7 +3,7 @@ package com.example.muro.fh_request.service;
 import com.example.muro.fh_request.domain.Fh_Request;
 import com.example.muro.fh_request.dto.Fh_RequestDto;
 import com.example.muro.fh_request.repository.Fh_RequestRepository;
-import com.example.muro.user.domain.User;
+import com.example.muro.user.domain.Users;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,7 +29,7 @@ public class Fh_RequestService {
         fhRequest.setFuneralhall(fhRequestDto.getFuneralhall());
 
         // User 엔티티 가져오기
-        User existingUser = fhRequestRepository.findUserById(fhRequestDto.getUserId());
+        Users existingUser = fhRequestRepository.findUserById(fhRequestDto.getUserId());
 
         // 가져온 User 엔티티를 Fh_Request 엔티티에 할당
         fhRequest.setUser(existingUser);
