@@ -1,6 +1,6 @@
 package com.example.muro.user.service;
 
-import com.example.muro.user.domain.User;
+import com.example.muro.user.domain.Users;
 import com.example.muro.user.dto.UserSignUpDto;
 import com.example.muro.user.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +19,7 @@ public class UserService {
     private UserRepository userRepository;
     //회원가입
 
-    public Long join(User user){
+    public Long join(Users user){
         this.validateDuplicateUser(user);
         this.userRepository.save(user);
         System.out.println(user);
@@ -27,7 +27,7 @@ public class UserService {
     }
 
     public String insertUser(@RequestBody UserSignUpDto userdto){
-        User user = new User();
+        Users user = new Users();
         user.setEmail(userdto.getEmail());
         user.setNickname(userdto.getNickname());
         user.setPassword(userdto.getPassword());
@@ -49,7 +49,7 @@ public class UserService {
     }
 
     public void deleteUser(Long userId) {
-        User user = userRepository.findOne(userId);
+        Users user = userRepository.findOne(userId);
         if (user != null) {
             userRepository.delete(user);
         } else {
@@ -57,8 +57,8 @@ public class UserService {
         }
     }
 
-    public User getUserById(Long userid){
-        Optional<User> user = Optional.ofNullable(userRepository.findOne(userid));
+    public Users getUserById(Long userid){
+        Optional<Users> user = Optional.ofNullable(userRepository.findOne(userid));
         if (user.isPresent()) {
             return user.get();
         } else {
@@ -66,18 +66,18 @@ public class UserService {
         }
     }
 
-    private void validateDuplicateUser(User user) {
+    private void validateDuplicateUser(Users user) {
         //EXCEPTION
-        List<User> findUsers = userRepository.findByNickname(user.getNickname());
+        List<Users> findUsers = userRepository.findByNickname(user.getNickname());
         if (!findUsers.isEmpty()) {
             throw new IllegalStateException("이미 존재하는 회원입니다.");
         }
     }
 
-    public List<User> findUsers(){
+    public List<Users> findUsers(){
         return userRepository.findAll();
     }
-    public User findOne(Long userId){
+    public Users findOne(Long userId){
         return userRepository.findOne(userId);
     }
 

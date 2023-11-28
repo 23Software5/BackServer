@@ -1,17 +1,13 @@
 package com.example.muro.user.controller;
 
 import com.example.muro.user.domain.LoginRequest;
-import com.example.muro.user.domain.User;
+import com.example.muro.user.domain.Users;
 //import com.example.muro.user.dto.UserDto;
 import com.example.muro.user.dto.UserSignUpDto;
 import com.example.muro.user.repository.UserRepository;
 import com.example.muro.user.service.UserService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import javax.validation.Valid;
-import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
@@ -37,7 +33,7 @@ public class UserController {
     public String create(@RequestBody UserSignUpDto userDto){
         //System.out.println(user);
         //userService.insertUser(user);
-        User user = new User();
+        Users user = new Users();
         user.setEmail(userDto.getEmail());
         user.setNickname(userDto.getNickname());
         user.setPassword(userDto.getPassword());
@@ -56,7 +52,7 @@ public class UserController {
 
     //3)회원 조회(마이페이지)
     @GetMapping("/settings/{userId}")
-    public User getUserById(@PathVariable Long userId) {
+    public Users getUserById(@PathVariable Long userId) {
         return userService.getUserById(userId);
     }
 
@@ -67,7 +63,7 @@ public class UserController {
         String password = loginRequest.getPassword();
 
         // 사용자 정보 확인
-        User user = userRepository.findByUserEmail(userEmail);
+        Users user = userRepository.findByUserEmail(userEmail);
         if (user != null && user.getPassword().equals(password)) {
             //인증 토큰은 다시...
             //String token = authService.authenticateUser(loginRequest.getUsername(), loginRequest.getPassword());

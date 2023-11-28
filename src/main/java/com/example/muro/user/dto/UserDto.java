@@ -1,13 +1,7 @@
 package com.example.muro.user.dto;
 
-import com.example.muro.user.domain.User;
 import lombok.Builder;
 import lombok.Getter;
-
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
-import java.util.Date;
 
 @Getter
 public class UserDto {

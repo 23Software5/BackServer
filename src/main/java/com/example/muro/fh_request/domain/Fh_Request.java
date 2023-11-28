@@ -1,8 +1,7 @@
 package com.example.muro.fh_request.domain;
 
 import com.example.muro.funeralhall.domain.Funeralhall;
-import com.example.muro.review.domain.Review;
-import com.example.muro.user.domain.User;
+import com.example.muro.user.domain.Users;
 
 
 import javax.persistence.*;
@@ -10,12 +9,14 @@ import java.util.Date;
 
 @Entity
 @Table(name = "fh_request")
+@SequenceGenerator(name = "fhr_seq", sequenceName = "fhr_seq", initialValue = 100, allocationSize = 1)
 public class Fh_Request {
 
     @Enumerated(EnumType.STRING)
     private FhRequestStatus status = FhRequestStatus.REQUEST; // 초기값을 REQUEST로 설정
 
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "fhr_seq")
     @Column(name = "fhrequest_id")
     private Long fhr_id;
 
@@ -37,14 +38,14 @@ public class Fh_Request {
     private Date fh_date;
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private User user;
+    private Users user;
 
 
-    public User getUser() {
+    public Users getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(Users user) {
         this.user = user;
     }
 
