@@ -3,16 +3,18 @@ package com.example.muro.fh_request.domain;
 import com.example.muro.funeralhall.domain.Funeralhall;
 import com.example.muro.review.domain.Review;
 import com.example.muro.user.domain.User;
-import lombok.Getter;
-import lombok.Setter;
+
 
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Getter @Setter
 @Table(name = "fh_request")
 public class Fh_Request {
+
+    @Enumerated(EnumType.STRING)
+    private FhRequestStatus status = FhRequestStatus.REQUEST; // 초기값을 REQUEST로 설정
+
     @Id @GeneratedValue
     @Column(name = "fhrequest_id")
     private Long fhr_id;
@@ -21,14 +23,10 @@ public class Fh_Request {
     @JoinColumn(name = "fh_id")
     private Funeralhall funeralhall;
 
-    @ManyToOne
-    @JoinColumn(name="user_id")
-    private User User;
+
 
     /*@OneToOne(mappedBy = "fh_request")
     private Review review;*/
-
-    private FhRequestStatus status; //작성상태 [REQUEST,REVIEW]
 
     private String pet_name;
 
@@ -37,6 +35,20 @@ public class Fh_Request {
     private String pet_species;
 
     private Date fh_date;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+
 
     public Long getFhr_id() {
         return fhr_id;
@@ -53,15 +65,6 @@ public class Fh_Request {
 
     public void setFuneralhall(Funeralhall funeralhall) {
         this.funeralhall = funeralhall;
-    }
-
-    // User Getter 및 Setter
-    public User getUser() {
-        return User;
-    }
-
-    public void setUser(User user) {
-        User = user;
     }
 
     // review Getter 및 Setter
@@ -117,4 +120,6 @@ public class Fh_Request {
     public void setFh_date(Date fh_date) {
         this.fh_date = fh_date;
     }
+
+
 }
