@@ -1,5 +1,6 @@
 package com.example.muro.fh_request.controller;
 
+import com.example.muro.fh_request.domain.FhRequestStatus;
 import com.example.muro.fh_request.domain.Fh_Request;
 import com.example.muro.fh_request.dto.Fh_RequestDto;
 import com.example.muro.fh_request.service.Fh_RequestService;
@@ -41,6 +42,20 @@ public class Fh_RequestController {
             return new ResponseEntity<>(request.get(), HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @PutMapping("/{requestId}/update-status")
+    public ResponseEntity<String> updateFhRequestStatus(
+            @PathVariable Long requestId,
+            @RequestParam FhRequestStatus newStatus
+    ) {
+        try {
+            fhRequestService.updateFhRequestStatus(requestId, newStatus);
+            return ResponseEntity.ok("Fh_Request status updated successfully.");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Error updating Fh_Request status: " + e.getMessage());
         }
     }
 
