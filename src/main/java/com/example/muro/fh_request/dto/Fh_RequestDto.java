@@ -10,7 +10,7 @@ public class Fh_RequestDto {
     private Long fhr_id;
 
     private Funeralhall funeralhall;
-    private User User;
+
 
     private String pet_name;
 
@@ -19,6 +19,16 @@ public class Fh_RequestDto {
     private String pet_species;
 
     private Date fh_date;
+
+    private Long userId;
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
 
     public Long getFhr_id() {
         return fhr_id;
@@ -35,15 +45,6 @@ public class Fh_RequestDto {
 
     public void setFuneralhall(Funeralhall funeralhall) {
         this.funeralhall = funeralhall;
-    }
-
-    // User Getter 및 Setter
-    public User getUser() {
-        return User;
-    }
-
-    public void setUser(User user) {
-        User = user;
     }
 
     // pet_name Getter 및 Setter

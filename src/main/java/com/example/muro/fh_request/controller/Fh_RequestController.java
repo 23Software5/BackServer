@@ -25,10 +25,10 @@ public class Fh_RequestController {
         try{
             fhRequestService.createFhRequest(fhRequestDto);
             return ResponseEntity.ok("장례 요청 성공");
-        }catch(Exception e){
+        } catch(Exception e){
+            e.printStackTrace(); // 에러 로그 출력
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body("장례 요청을 생성하는 중에 오류 발생");
-
         }
     }
 
