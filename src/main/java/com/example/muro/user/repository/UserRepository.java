@@ -24,6 +24,7 @@ public class UserRepository{
             throw new IllegalArgumentException("해당 사용자를 찾을 수 없습니다.");
         }
     }
+    //user -> users로 변경
 
 
    public Users findOne(Long id){

@@ -39,6 +39,7 @@ public class Review {
     @NotNull
     @Column(name = "startscore")
     private int startscore;
+
     public Review(Fh_Request fhRequest, Funeralhall funeralhall, Users user, String reviewText, int startscore, Long fhRequestId) {
         this.fh_request = fhRequest;
         this.funeralhall = funeralhall;
@@ -46,6 +47,7 @@ public class Review {
         this.reviewText = reviewText;
         this.startscore = startscore;
     }
+
 
     public String getReviewText() {
         return reviewText;
@@ -83,8 +85,8 @@ public class Review {
     public void setFuneralhall(Funeralhall funeralhall) {
         this.funeralhall = funeralhall;
     }
-}
 
+}
 
     // 생성자, 메소드 등을 추가할 수 있습니다.
 
