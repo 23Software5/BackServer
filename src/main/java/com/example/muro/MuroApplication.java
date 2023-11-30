@@ -9,5 +9,4 @@ public class MuroApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(MuroApplication.class, args);
 	}
-
 }

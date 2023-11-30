@@ -10,6 +10,6 @@ import java.util.List;
 
 public interface FuneralhallRepository extends JpaRepository<Funeralhall, Long> {
 
-    @Query("SELECT new com.example.muro.funeralhall.dto.FuneralhallDto(f.fh_id, f.fh_name, f.fh_location, f.fh_link, f.fh_telephone, f.fh_intro) FROM Funeralhall f")
+    @Query("SELECT new com.example.muro.funeralhall.dto.FuneralhallDto(f.fh_id, f.fh_name, f.fh_location, f.fh_link, f.fh_telephone, f.fh_intro, f.fh_type) FROM Funeralhall f")
     List<FuneralhallDto> getAllFuneralhalls();
 }

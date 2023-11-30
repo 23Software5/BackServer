@@ -1,4 +1,3 @@
-// ReviewDto.java
 package com.example.muro.review.dto;
 
 import lombok.Getter;
@@ -8,12 +7,15 @@ import lombok.Setter;
 @Setter
 public class ReviewDto {
 
-    private Long reviewId;
-    private Long fhRequestId;  // 외래키
-    private Long fhId;         // 외래키
-    private Long userId;       // 외래키
+    private Long fhRequestId;
+    private Long userId;
     private String reviewText;
     private int startscore;
 
-
+    public ReviewDto(Long fhRequestId, Long userId, String reviewText, int startscore) {
+        this.fhRequestId = fhRequestId;
+        this.userId = userId;
+        this.reviewText = reviewText;
+        this.startscore = startscore;
+    }
 }

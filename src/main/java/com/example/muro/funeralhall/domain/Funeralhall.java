@@ -23,6 +23,10 @@ public class Funeralhall {
 
     private String fh_intro;
 
+    // 새로운 필드 추가
+    @NotBlank
+    private String fh_type;
+
     // 생성자, getter, setter 등이 있어야 합니다.
 
     public Long getFh_id() {
@@ -72,4 +76,13 @@ public class Funeralhall {
     public void setFh_intro(String fh_intro) {
         this.fh_intro = fh_intro;
     }
+
+    public String getFh_type() {
+        return fh_type;
+    }
+
+    public void setFh_type(String fh_type) {
+        this.fh_type = fh_type;
+    }
 }
+
