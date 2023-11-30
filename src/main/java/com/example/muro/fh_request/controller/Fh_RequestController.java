@@ -3,12 +3,14 @@ package com.example.muro.fh_request.controller;
 import com.example.muro.fh_request.domain.FhRequestStatus;
 import com.example.muro.fh_request.domain.Fh_Request;
 import com.example.muro.fh_request.dto.Fh_RequestDto;
+import com.example.muro.fh_request.repository.Fh_RequestRepository;
 import com.example.muro.fh_request.service.Fh_RequestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -16,8 +18,10 @@ import java.util.Optional;
 public class Fh_RequestController {
 
     private final Fh_RequestService fhRequestService;
+    private final Fh_RequestRepository fhRequestRepository;
     @Autowired
-    public Fh_RequestController(Fh_RequestService fhRequestService) {
+    public Fh_RequestController(Fh_RequestService fhRequestService, Fh_RequestRepository fhRequestRepository) {
+        this.fhRequestRepository = fhRequestRepository;
         this.fhRequestService = fhRequestService;
     }
 
@@ -57,6 +61,11 @@ public class Fh_RequestController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body("Error updating Fh_Request status: " + e.getMessage());
         }
+    }
+
+    @GetMapping("/by-user/{userId}")
+    public List<Fh_Request> getRequestsByUserId(@PathVariable Long userId) {
+        return fhRequestRepository.findRequestsByUserId(userId);
     }
 
 
