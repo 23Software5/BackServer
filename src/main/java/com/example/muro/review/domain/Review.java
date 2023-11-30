@@ -39,7 +39,6 @@ public class Review {
     @NotNull
     @Column(name = "startscore")
     private int startscore;
-
     public Review(Fh_Request fhRequest, Funeralhall funeralhall, Users user, String reviewText, int startscore) {
         this.fh_request = fhRequest;
         this.funeralhall = funeralhall;
@@ -51,4 +50,8 @@ public class Review {
         // 기본 생성자
     }
 
+}
+
+
+    // 생성자, 메소드 등을 추가할 수 있습니다.
 }

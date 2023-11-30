@@ -37,6 +37,11 @@ public class UserRepository{
                .getResultList();
 
    }
+    public Users findOneWithFhRequests(Long userId){
+        return em.createQuery("SELECT u FROM users u LEFT JOIN FETCH u.fhRequests WHERE u.userid = :userId", Users.class)
+                .setParameter("userId", userId)
+                .getSingleResult();
+    }
 
    public List<Users> findByNickname(String nickname){
        return em.createQuery("select m from users m where m.nickname = :nickname", Users.class)
@@ -79,4 +84,3 @@ public class UserRepository{
     //Optional<User> findByNickname(String nickname);
 
 }
-//야호오

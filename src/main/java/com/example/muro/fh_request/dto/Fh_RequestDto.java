@@ -10,7 +10,6 @@ public class Fh_RequestDto {
 
     private Funeralhall funeralhall;
 
-
     private String pet_name;
 
     private Long pet_weight;
@@ -20,6 +19,8 @@ public class Fh_RequestDto {
     private Date fh_date;
 
     private Long userId;
+
+    private String fr_text;
 
     public Long getUserId() {
         return userId;
@@ -80,6 +81,14 @@ public class Fh_RequestDto {
 
     public void setFh_date(Date fh_date) {
         this.fh_date = fh_date;
+    }
+
+    public String getFr_text() {
+        return fr_text;
+    }
+
+    public void setFr_text(String fr_text) {
+        this.fr_text = fr_text;
     }
 }
 
