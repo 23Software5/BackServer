@@ -120,3 +120,4 @@ public class Fh_Request {
         this.fr_text = fr_text;
     }
 }
+//오류 삭제
