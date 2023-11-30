@@ -40,6 +40,7 @@ public class Fh_RequestService {
         fhRequest.setPet_species(fhRequestDto.getPet_species());
         fhRequest.setPet_weight(fhRequestDto.getPet_weight());
         fhRequest.setFh_date(fhRequestDto.getFh_date());
+        fhRequest.setFr_text(fhRequestDto.getFr_text());
 
         // 저장 로직 - Repository 사용
         fhRequestRepository.createFhRequest(fhRequest);

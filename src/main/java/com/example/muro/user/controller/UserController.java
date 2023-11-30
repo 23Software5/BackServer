@@ -7,7 +7,11 @@ import com.example.muro.user.dto.UserSignUpDto;
 import com.example.muro.user.repository.UserRepository;
 import com.example.muro.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.NoSuchElementException;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
@@ -45,9 +49,17 @@ public class UserController {
 
     //2)회원 탈퇴
     @DeleteMapping("/{userId}")
-    public String deleteUser(@PathVariable Long userId) {
-        userService.deleteUser(userId);
-        return "회원 탈퇴 성공";
+    public ResponseEntity<String> deleteUserById(@PathVariable Long userId) {
+        try {
+            userService.deleteUser(userId);
+            return ResponseEntity.ok("회원 탈퇴 성공");
+        } catch (NoSuchElementException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("사용자를 찾을 수 없습니다.");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("회원 탈퇴 중 오류가 발생했습니다.");
+        }
     }
 
     //3)회원 조회(마이페이지)
