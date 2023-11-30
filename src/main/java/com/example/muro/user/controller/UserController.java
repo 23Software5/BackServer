@@ -3,6 +3,7 @@ package com.example.muro.user.controller;
 import com.example.muro.user.domain.LoginRequest;
 import com.example.muro.user.domain.Users;
 //import com.example.muro.user.dto.UserDto;
+import com.example.muro.user.dto.UserDto;
 import com.example.muro.user.dto.UserSignUpDto;
 import com.example.muro.user.repository.UserRepository;
 import com.example.muro.user.service.UserService;
@@ -84,6 +85,34 @@ public class UserController {
             return "로그인 성공";
         } else {
             return "로그인 실패";
+        }
+    }
+
+    @PutMapping("/{userId}")
+    public ResponseEntity<String> updateUserDetails(
+            @PathVariable Long userId,
+            @RequestBody UserDto userDto
+    ) {
+        try {
+            Users userToUpdate = userService.getUserById(userId);
+
+            if (userDto.getNickname() != null && !userDto.getNickname().isEmpty()) {
+                userToUpdate.setNickname(userDto.getNickname());
+            }
+
+            if (userDto.getPhoneNumber() != null && !userDto.getPhoneNumber().isEmpty()) {
+                userToUpdate.setPhoneNumber(userDto.getPhoneNumber());
+            }
+
+            userService.updateUser(userToUpdate);
+
+            return ResponseEntity.ok("User information updated successfully.");
+        } catch (NoSuchElementException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("User not found.");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("An error occurred while updating user information.");
         }
     }
 

@@ -4,6 +4,7 @@ public class UserSignUpDto {
     private String email;
     private String password;
     private String nickname;
+    private String phoneNumber;
 
     public UserSignUpDto() {
     }
@@ -21,4 +22,7 @@ public class UserSignUpDto {
     }
 
 
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
 }
