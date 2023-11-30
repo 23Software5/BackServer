@@ -4,6 +4,7 @@ import com.example.muro.user.domain.LoginRequest;
 import com.example.muro.user.domain.Users;
 //import com.example.muro.user.dto.UserDto;
 import com.example.muro.user.dto.UserDto;
+import com.example.muro.user.dto.UserResponse;
 import com.example.muro.user.dto.UserSignUpDto;
 import com.example.muro.user.repository.UserRepository;
 import com.example.muro.user.service.UserService;
@@ -68,23 +69,24 @@ public class UserController {
     public Users getUserById(@PathVariable Long userId) {
         return userService.getUserById(userId);
     }
-
     //4)로그인
     @PostMapping("/login")
-    public String login(@RequestBody LoginRequest loginRequest) {
+    public ResponseEntity<UserResponse> login(@RequestBody LoginRequest loginRequest) {
         String userEmail = loginRequest.getEmail();
         String password = loginRequest.getPassword();
 
         // 사용자 정보 확인
         Users user = userRepository.findByUserEmail(userEmail);
         if (user != null && user.getPassword().equals(password)) {
-            //인증 토큰은 다시...
-            //String token = authService.authenticateUser(loginRequest.getUsername(), loginRequest.getPassword());
+            // 로그인 성공 시 사용자의 ID를 응답으로 전달
+            UserResponse userResponse = new UserResponse();
+            userResponse.setUserId(user.getId()); // 또는 getId() 등으로 사용자 ID 설정
 
+            // 토큰 발급 로직 등 추가할 부분
 
-            return "로그인 성공";
+            return ResponseEntity.ok(userResponse);
         } else {
-            return "로그인 실패";
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
         }
     }
 
