@@ -43,19 +43,32 @@ public class UserRepository{
     }
 
    public List<Users> findByNickname(String nickname){
-       return em.createQuery("select m from User m where m.nickname = :nickname", Users.class)
+       return em.createQuery("select m from users m where m.nickname = :nickname", Users.class)
                .setParameter("nickname",nickname)
                .getResultList();
    }
     public Users findByUserEmail(String email) {
         try {
-            TypedQuery<Users> query = em.createQuery("SELECT u FROM User u WHERE u.email = :email", Users.class);
+            TypedQuery<Users> query = em.createQuery("SELECT u FROM users u WHERE u.email = :email", Users.class);
             query.setParameter("email", email);
             return query.getSingleResult();
         } catch (NoResultException ex) {
             return null;
         }
     }
+
+    public Users getUserById(Long userId) {
+        TypedQuery<Users> query = em.createQuery("SELECT u FROM users u WHERE u.userid = :userId", Users.class)
+                .setParameter("userId", userId);
+
+        List<Users> result = query.getResultList();
+        if (!result.isEmpty()) {
+            return result.get(0);
+        } else {
+            throw new IllegalArgumentException("해당 ID의 사용자를 찾을 수 없습니다.");
+        }
+    }
+
     /*public User findByUserEmail(String email) {
         try {
             return em.createQuery("SELECT u FROM User u WHERE u.email = :email", User.class)

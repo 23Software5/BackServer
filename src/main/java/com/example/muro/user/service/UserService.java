@@ -62,14 +62,19 @@ public class UserService {
         }
     }
 
-    public Users getUserById(Long userid){
+    public Users getUserById(Long userId) {
+        return userRepository.findOne(userId);
+    }
+
+    /*public Users getUserById(Long userid){
         Optional<Users> user = Optional.ofNullable(userRepository.findOne(userid));
         if (user.isPresent()) {
             return user.get();
         } else {
             throw new IllegalArgumentException("해당 ID의 사용자를 찾을 수 없습니다.");
         }
-    }
+    }*/
+
 
     private void validateDuplicateUser(Users user) {
         //EXCEPTION
