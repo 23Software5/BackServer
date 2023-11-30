@@ -38,7 +38,8 @@ public class FuneralhallService {
                 funeralhall.getFh_location(),
                 funeralhall.getFh_link(),
                 funeralhall.getFh_telephone(),
-                funeralhall.getFh_intro()
+                funeralhall.getFh_intro(),
+                funeralhall.getFh_type()
         );
     }
 }

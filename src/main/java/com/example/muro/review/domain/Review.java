@@ -1,6 +1,6 @@
-// Review.java
 package com.example.muro.review.domain;
 
+import com.example.muro.fh_request.domain.Fh_request;
 import com.example.muro.funeralhall.domain.Funeralhall;
 import com.example.muro.user.domain.User;
 import lombok.Getter;
@@ -10,7 +10,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-@Entity
+@Entity(name = "RegularReview")
 @Getter
 @Setter
 public class Review {
@@ -20,9 +20,9 @@ public class Review {
     @Column(name = "review_id")
     private Long reviewId;
 
-//    @ManyToOne
-//    @JoinColumn(name = "fhrequest_id")
-//    private FuneralRequest funeralRequest;
+    @ManyToOne
+    @JoinColumn(name = "fhrequest_id")
+    private Fh_request fh_request;
 
     @ManyToOne
     @JoinColumn(name = "fh_id")
@@ -40,5 +40,5 @@ public class Review {
     @Column(name = "startscore")
     private int startscore;
 
-    // 생성자, 메소드 등을 추가할 수 있습니다.
+    // ... (다른 필드 및 메소드)
 }

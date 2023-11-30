@@ -1,6 +1,7 @@
 package com.example.muro.fh_request.domain;
 
 import com.example.muro.funeralhall.domain.Funeralhall;
+import com.example.muro.review.domain.Review;
 import com.example.muro.user.domain.User;
 
 import javax.persistence.*;
@@ -18,11 +19,12 @@ public class Fh_request {
 
     @ManyToOne
     @JoinColumn(name="user_id")
-    private User User;
+    private User user;
 
     @OneToOne(mappedBy = "fh_request")
     private Review review;
 
     private FhRequestStatus status; //작성상태 [REQUEST,REVIEW]
 
+    // ... (다른 필드 및 메소드)
 }
