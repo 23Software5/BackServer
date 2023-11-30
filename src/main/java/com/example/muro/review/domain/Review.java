@@ -47,4 +47,8 @@ public class Review {
         this.reviewText = reviewText;
         this.startscore = startscore;
     }
+    public Review() {
+        // 기본 생성자
+    }
+
 }
