@@ -122,5 +122,10 @@ public class Fh_Request {
         this.fh_date = fh_date;
     }
 
-
+    public Fh_Request(Long fhr_id) {
+        this.fhr_id = fhr_id;
+    }
+    public Fh_Request() {
+        // 매개변수 없는 기본 생성자
+    }
 }

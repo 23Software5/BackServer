@@ -1,7 +1,9 @@
-// ReviewService.java
 package com.example.muro.review.service;
 
+import com.example.muro.fh_request.domain.Fh_Request;
+import com.example.muro.fh_request.repository.Fh_RequestRepository;
 import com.example.muro.review.domain.Review;
+import com.example.muro.review.dto.ReviewDto;
 import com.example.muro.review.repository.ReviewRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,23 +16,35 @@ public class ReviewService {
     @Autowired
     private ReviewRepository reviewRepository;
 
-    public Review createReview(String content) {
-        Review review = new Review();
-        /*review.setReviewText(content);
-        // startscore에 디폴트 값 또는 사용자 입력값을 설정해야 합니다.
-        review.setStartscore(0); // 예시로 0으로 설정했습니다.
-        return reviewRepository.save(review);*/
-        return review;
+    @Autowired
+    private Fh_RequestRepository fhRequestRepository;
+
+    public Review createReview(ReviewDto reviewDto) {
+        // Review 객체를 생성할 때 필요한 인자를 제공하는 생성자 사용
+        Review review = new Review(
+                null, // Fh_Request 객체는 따로 생성하여 설정
+                null, // Funeralhall 객체는 따로 설정
+                null, // Users 객체는 따로 설정
+                reviewDto.getReviewText(),
+                reviewDto.getStartscore()
+        );
+
+        // 외래키 설정
+        Fh_Request fhRequest = fhRequestRepository.findById(reviewDto.getFhRequestId()).orElse(null);
+        if (fhRequest != null) {
+            review.setFh_request(fhRequest);
+            review.setFuneralhall(fhRequest.getFuneralhall());
+            review.setUser(fhRequest.getUser());
+        }
+
+        return reviewRepository.save(review);
     }
 
     public Review getReviewById(Long id) {
         return reviewRepository.findById(id).orElse(null);
     }
 
-    // 후기 전체 조회 메서드
     public List<Review> getAllReviews() {
         return reviewRepository.findAll();
     }
-
-    // 추가적인 조회 로직이나 업데이트 로직을 필요에 따라 추가할 수 있습니다.
 }

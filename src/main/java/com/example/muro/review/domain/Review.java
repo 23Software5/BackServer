@@ -39,4 +39,12 @@ public class Review {
     @NotNull
     @Column(name = "startscore")
     private int startscore;
+
+    public Review(Fh_Request fhRequest, Funeralhall funeralhall, Users user, String reviewText, int startscore) {
+        this.fh_request = fhRequest;
+        this.funeralhall = funeralhall;
+        this.user = user;
+        this.reviewText = reviewText;
+        this.startscore = startscore;
+    }
 }
