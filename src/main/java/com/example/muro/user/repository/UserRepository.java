@@ -24,6 +24,7 @@ public class UserRepository{
             throw new IllegalArgumentException("해당 사용자를 찾을 수 없습니다.");
         }
     }
+    //user -> users로 변경
 
 
    public Users findOne(Long id){
@@ -32,19 +33,19 @@ public class UserRepository{
 
 
    public List<Users> findAll(){
-       return em.createQuery("select m from User m", Users.class)
+       return em.createQuery("select m from users m", Users.class)
                .getResultList();
 
    }
 
    public List<Users> findByNickname(String nickname){
-       return em.createQuery("select m from User m where m.nickname = :nickname", Users.class)
+       return em.createQuery("select m from users m where m.nickname = :nickname", Users.class)
                .setParameter("nickname",nickname)
                .getResultList();
    }
     public Users findByUserEmail(String email) {
         try {
-            TypedQuery<Users> query = em.createQuery("SELECT u FROM User u WHERE u.email = :email", Users.class);
+            TypedQuery<Users> query = em.createQuery("SELECT u FROM users u WHERE u.email = :email", Users.class);
             query.setParameter("email", email);
             return query.getSingleResult();
         } catch (NoResultException ex) {
