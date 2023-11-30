@@ -37,6 +37,9 @@ public class ReviewService {
             review.setUser(fhRequest.getUser());
         }
 
+        return reviewRepository.save(review);
+    }
+
     public Review getReviewById(Long id) {
         return reviewRepository.findById(id).orElse(null);
     }
