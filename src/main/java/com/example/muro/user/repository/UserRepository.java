@@ -32,7 +32,7 @@ public class UserRepository{
 
 
    public List<Users> findAll(){
-       return em.createQuery("select m from User m", Users.class)
+       return em.createQuery("select m from users m", Users.class)
                .getResultList();
 
    }
