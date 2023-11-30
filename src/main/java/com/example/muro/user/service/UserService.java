@@ -1,5 +1,7 @@
 package com.example.muro.user.service;
 
+import com.example.muro.review.domain.Review;
+import com.example.muro.review.repository.ReviewRepository;
 import com.example.muro.user.domain.Users;
 import com.example.muro.user.dto.UserSignUpDto;
 import com.example.muro.user.repository.UserRepository;
@@ -17,6 +19,9 @@ import java.util.Optional;
 public class UserService {
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private ReviewRepository reviewRepository;
     //회원가입
 
     public Long join(Users user){
@@ -74,6 +79,15 @@ public class UserService {
             throw new IllegalArgumentException("해당 ID의 사용자를 찾을 수 없습니다.");
         }
     }*/
+    public List<Review> getReviewsByUserId(Long userId) {
+        Users user = userRepository.findOne(userId);
+        if (user != null) {
+            // 해당 사용자의 리뷰를 가져오는 메서드 호출
+            return reviewRepository.findAllByUserId(userId);
+        } else {
+            throw new IllegalArgumentException("해당 ID의 사용자를 찾을 수 없습니다.");
+        }
+    }
 
 
     private void validateDuplicateUser(Users user) {

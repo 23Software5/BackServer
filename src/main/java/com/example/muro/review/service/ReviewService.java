@@ -26,8 +26,7 @@ public class ReviewService {
                 null, // Funeralhall 객체는 따로 설정
                 null, // Users 객체는 따로 설정
                 reviewDto.getReviewText(),
-                reviewDto.getStartscore(),
-                reviewDto.getFhRequestId()
+                reviewDto.getStartscore()
         );
 
         // 외래키 설정

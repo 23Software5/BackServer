@@ -50,4 +50,61 @@ public class Fh_Request {
     public Long getFhr_id() {
         return fhr_id;
     }
+
+    public void setFuneralhall(Funeralhall funeralhall) {
+        this.funeralhall = funeralhall;
+    }
+
+    public String getPet_name() {
+        return pet_name;
+    }
+
+    public void setPet_name(String pet_name) {
+        this.pet_name = pet_name;
+    }
+
+    public Long getPet_weight() {
+        return pet_weight;
+    }
+
+    public void setPet_weight(Long pet_weight) {
+        this.pet_weight = pet_weight;
+    }
+
+    public String getPet_species() {
+        return pet_species;
+    }
+
+    public void setPet_species(String pet_species) {
+        this.pet_species = pet_species;
+    }
+
+    public Date getFh_date() {
+        return fh_date;
+    }
+
+    public void setFh_date(Date fh_date) {
+        this.fh_date = fh_date;
+    }
+
+    public String getFr_text() {
+        return fr_text;
+    }
+
+    public void setFr_text(String fr_text) {
+        this.fr_text = fr_text;
+    }
+
+    public Funeralhall getFuneralhall() {
+        return funeralhall;
+    }
+
+
+    public FhRequestStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(FhRequestStatus status) {
+        this.status = status;
+    }
 }

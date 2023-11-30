@@ -3,6 +3,7 @@ package com.example.muro.review.controller;
 import com.example.muro.review.domain.Review;
 import com.example.muro.review.dto.ReviewDto;
 import com.example.muro.review.service.ReviewService;
+import com.example.muro.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,9 +14,22 @@ import java.util.List;
 @RestController
 @RequestMapping("/reviews")
 public class ReviewController {
+    @Autowired
+    private UserService userService;
 
     @Autowired
     private ReviewService reviewService;
+
+
+    @GetMapping("/{userId}/all")
+    public ResponseEntity<List<Review>> getReviewsByUserId(@PathVariable Long userId) {
+        try {
+            List<Review> reviews = userService.getReviewsByUserId(userId);
+            return ResponseEntity.ok(reviews);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
+    }
 
     @PostMapping("/create")
     public ResponseEntity<String> createReview(@RequestBody ReviewDto reviewDto) {
@@ -36,6 +50,7 @@ public class ReviewController {
                 new ResponseEntity<>(review, HttpStatus.OK) :
                 new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
+
 
     @GetMapping
     public List<Review> getAllReviews() {

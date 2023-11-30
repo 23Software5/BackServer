@@ -70,6 +70,7 @@ public class UserRepository{
         }
     }
 
+
     /*public User findByUserEmail(String email) {
         try {
             return em.createQuery("SELECT u FROM User u WHERE u.email = :email", User.class)
