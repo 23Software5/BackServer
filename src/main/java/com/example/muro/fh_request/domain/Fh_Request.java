@@ -39,6 +39,7 @@ public class Fh_Request {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private Users user;
+    private String fr_Text;
 
 
     public Users getUser() {
@@ -127,5 +128,9 @@ public class Fh_Request {
     }
     public Fh_Request() {
         // 매개변수 없는 기본 생성자
+    }
+
+    public void setFr_text(String frText) {
+        this.fr_Text = frText;
     }
 }
