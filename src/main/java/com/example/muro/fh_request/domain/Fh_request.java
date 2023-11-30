@@ -12,9 +12,6 @@ import java.util.Date;
 @SequenceGenerator(name = "fhr_seq", sequenceName = "fhr_seq", initialValue = 100, allocationSize = 1)
 public class Fh_Request {
 
-    @Enumerated(EnumType.STRING)
-    private FhRequestStatus status = FhRequestStatus.REQUEST; // 초기값을 REQUEST로 설정
-
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "fhr_seq")
     @Column(name = "fhrequest_id")
@@ -24,11 +21,6 @@ public class Fh_Request {
     @JoinColumn(name = "fh_id")
     private Funeralhall funeralhall;
 
-
-
-    /*@OneToOne(mappedBy = "fh_request")
-    private Review review;*/
-
     private String pet_name;
 
     private Long pet_weight;
@@ -36,9 +28,15 @@ public class Fh_Request {
     private String pet_species;
 
     private Date fh_date;
+
+    private String fr_text;
     @ManyToOne
     @JoinColumn(name = "user_id")
     private Users user;
+
+    @Enumerated(EnumType.STRING)
+    private FhRequestStatus status = FhRequestStatus.REQUEST; // 초기값을 REQUEST로 설정
+
 
 
     public Users getUser() {
@@ -48,8 +46,6 @@ public class Fh_Request {
     public void setUser(Users user) {
         this.user = user;
     }
-
-
 
     public Long getFhr_id() {
         return fhr_id;
@@ -68,14 +64,7 @@ public class Fh_Request {
         this.funeralhall = funeralhall;
     }
 
-    // review Getter 및 Setter
-    /*public Review getReview() {
-        return review;
-    }
 
-    public void setReview(Review review) {
-        this.review = review;
-    }*/
 
     // status Getter 및 Setter
     public FhRequestStatus getStatus() {
@@ -122,10 +111,12 @@ public class Fh_Request {
         this.fh_date = fh_date;
     }
 
-    public Fh_Request(Long fhr_id) {
-        this.fhr_id = fhr_id;
+
+    public String getFr_text() {
+        return fr_text;
     }
-    public Fh_Request() {
-        // 매개변수 없는 기본 생성자
+
+    public void setFr_text(String fr_text) {
+        this.fr_text = fr_text;
     }
 }
