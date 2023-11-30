@@ -12,7 +12,7 @@ public class Users {
     private String nickname;
     private String password;
 
-    //private String phoneNumber;
+    private String phonenumber;
 
     public Users(){
 
@@ -54,6 +54,14 @@ public class Users {
 
     public void setNickname(final String nickname) {
         this.nickname = nickname;
+    }
+
+    public String getPhoneNumber() {
+        return phonenumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phonenumber = phoneNumber;
     }
 
 

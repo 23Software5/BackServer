@@ -40,5 +40,7 @@ public class Review {
     @Column(name = "startscore")
     private int startscore;
 
+
+
     // 생성자, 메소드 등을 추가할 수 있습니다.
 }

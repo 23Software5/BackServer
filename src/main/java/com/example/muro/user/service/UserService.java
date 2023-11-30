@@ -31,6 +31,7 @@ public class UserService {
         user.setEmail(userdto.getEmail());
         user.setNickname(userdto.getNickname());
         user.setPassword(userdto.getPassword());
+        user.setPhoneNumber(userdto.getPhoneNumber());
         //validateDuplicateUser(user);
         //email검사 로직
         /*if (userRepository.findByUserEmail(user.getEmail()) != null) {
@@ -43,9 +44,13 @@ public class UserService {
         System.out.println(user.getId());
         System.out.println(user.getNickname());
         System.out.println(user.getEmail());
+        System.out.println(user.getPhoneNumber());
 
         return "회원가입 성공";
 
+    }
+    public void updateUser(Users users) {
+        userRepository.save(users);
     }
 
     public void deleteUser(Long userId) {
