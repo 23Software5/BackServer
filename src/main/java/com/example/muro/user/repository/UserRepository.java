@@ -24,6 +24,7 @@ public class UserRepository{
             throw new IllegalArgumentException("해당 사용자를 찾을 수 없습니다.");
         }
     }
+    //user -> users로 변경
 
 
    public Users findOne(Long id){
@@ -32,7 +33,7 @@ public class UserRepository{
 
 
    public List<Users> findAll(){
-       return em.createQuery("select m from User m", Users.class)
+       return em.createQuery("select m from users m", Users.class)
                .getResultList();
 
    }
@@ -68,6 +69,7 @@ public class UserRepository{
             throw new IllegalArgumentException("해당 ID의 사용자를 찾을 수 없습니다.");
         }
     }
+
 
     /*public User findByUserEmail(String email) {
         try {

@@ -12,9 +12,6 @@ import java.util.Date;
 @SequenceGenerator(name = "fhr_seq", sequenceName = "fhr_seq", initialValue = 100, allocationSize = 1)
 public class Fh_Request {
 
-    @Enumerated(EnumType.STRING)
-    private FhRequestStatus status = FhRequestStatus.REQUEST; // 초기값을 REQUEST로 설정
-
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "fhr_seq")
     @Column(name = "fhrequest_id")
@@ -24,11 +21,6 @@ public class Fh_Request {
     @JoinColumn(name = "fh_id")
     private Funeralhall funeralhall;
 
-
-
-    /*@OneToOne(mappedBy = "fh_request")
-    private Review review;*/
-
     private String pet_name;
 
     private Long pet_weight;
@@ -36,10 +28,15 @@ public class Fh_Request {
     private String pet_species;
 
     private Date fh_date;
+
+    private String fr_text;
     @ManyToOne
     @JoinColumn(name = "user_id")
     private Users user;
-    private String fr_Text;
+
+    @Enumerated(EnumType.STRING)
+    private FhRequestStatus status = FhRequestStatus.REQUEST; // 초기값을 REQUEST로 설정
+
 
 
     public Users getUser() {
@@ -50,44 +47,14 @@ public class Fh_Request {
         this.user = user;
     }
 
-
-
     public Long getFhr_id() {
         return fhr_id;
-    }
-
-    public void setFhr_id(Long fhr_id) {
-        this.fhr_id = fhr_id;
-    }
-
-    // funeralhall Getter 및 Setter
-    public Funeralhall getFuneralhall() {
-        return funeralhall;
     }
 
     public void setFuneralhall(Funeralhall funeralhall) {
         this.funeralhall = funeralhall;
     }
 
-    // review Getter 및 Setter
-    /*public Review getReview() {
-        return review;
-    }
-
-    public void setReview(Review review) {
-        this.review = review;
-    }*/
-
-    // status Getter 및 Setter
-    public FhRequestStatus getStatus() {
-        return status;
-    }
-
-    public void setStatus(FhRequestStatus status) {
-        this.status = status;
-    }
-
-    // pet_name Getter 및 Setter
     public String getPet_name() {
         return pet_name;
     }
@@ -96,7 +63,6 @@ public class Fh_Request {
         this.pet_name = pet_name;
     }
 
-    // pet_weight Getter 및 Setter
     public Long getPet_weight() {
         return pet_weight;
     }
@@ -105,7 +71,6 @@ public class Fh_Request {
         this.pet_weight = pet_weight;
     }
 
-    // pet_species Getter 및 Setter
     public String getPet_species() {
         return pet_species;
     }
@@ -114,7 +79,6 @@ public class Fh_Request {
         this.pet_species = pet_species;
     }
 
-    // fh_date Getter 및 Setter
     public Date getFh_date() {
         return fh_date;
     }
@@ -123,14 +87,24 @@ public class Fh_Request {
         this.fh_date = fh_date;
     }
 
-    public Fh_Request(Long fhr_id) {
-        this.fhr_id = fhr_id;
-    }
-    public Fh_Request() {
-        // 매개변수 없는 기본 생성자
+    public String getFr_text() {
+        return fr_text;
     }
 
-    public void setFr_text(String frText) {
-        this.fr_Text = frText;
+    public void setFr_text(String fr_text) {
+        this.fr_text = fr_text;
+    }
+
+    public Funeralhall getFuneralhall() {
+        return funeralhall;
+    }
+
+
+    public FhRequestStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(FhRequestStatus status) {
+        this.status = status;
     }
 }

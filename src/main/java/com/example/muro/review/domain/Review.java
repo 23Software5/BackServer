@@ -39,12 +39,48 @@ public class Review {
     @NotNull
     @Column(name = "startscore")
     private int startscore;
+
     public Review(Fh_Request fhRequest, Funeralhall funeralhall, Users user, String reviewText, int startscore) {
         this.fh_request = fhRequest;
         this.funeralhall = funeralhall;
         this.user = user;
         this.reviewText = reviewText;
         this.startscore = startscore;
+    }
+    public Review() {
+        // 기본 생성자 내용 (필요한 경우 추가)
+    }
+
+    public Long getReviewId() {
+        return reviewId;
+    }
+
+    public void setReviewId(Long reviewId) {
+        this.reviewId = reviewId;
+    }
+
+    public Fh_Request getFh_request() {
+        return fh_request;
+    }
+
+    public void setFh_request(Fh_Request fh_request) {
+        this.fh_request = fh_request;
+    }
+
+    public Funeralhall getFuneralhall() {
+        return funeralhall;
+    }
+
+    public void setFuneralhall(Funeralhall funeralhall) {
+        this.funeralhall = funeralhall;
+    }
+
+    public Users getUser() {
+        return user;
+    }
+
+    public void setUser(Users user) {
+        this.user = user;
     }
 
     public String getReviewText() {
@@ -62,29 +98,4 @@ public class Review {
     public void setStartscore(int startscore) {
         this.startscore = startscore;
     }
-
-
-    public Users getUser() {
-        return user;
-    }
-
-    public void setUser(Users user) {
-        this.user = user;
-    }
-
-    public Fh_Request setFh_request(Fh_Request fhRequest) {
-        return fh_request;
-    }
-
-    public void setFhRequest(Fh_Request fhRequest) {
-        this.fh_request = fh_request;
-    }
-
-    public void setFuneralhall(Funeralhall funeralhall) {
-        this.funeralhall = funeralhall;
-    }
 }
-
-
-    // 생성자, 메소드 등을 추가할 수 있습니다.
-
