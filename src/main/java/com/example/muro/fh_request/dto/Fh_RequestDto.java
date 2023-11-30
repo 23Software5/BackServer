@@ -1,33 +1,15 @@
-package com.example.muro.fh_request.domain;
+package com.example.muro.fh_request.dto;
 
 import com.example.muro.funeralhall.domain.Funeralhall;
-import com.example.muro.user.domain.Users;
 
-
-import javax.persistence.*;
 import java.util.Date;
 
-@Entity
-@Table(name = "fh_request")
-@SequenceGenerator(name = "fhr_seq", sequenceName = "fhr_seq", initialValue = 100, allocationSize = 1)
-public class Fh_Request {
+public class Fh_RequestDto {
 
-    @Enumerated(EnumType.STRING)
-    private FhRequestStatus status = FhRequestStatus.REQUEST; // 초기값을 REQUEST로 설정
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "fhr_seq")
-    @Column(name = "fhrequest_id")
     private Long fhr_id;
 
-    @ManyToOne
-    @JoinColumn(name = "fh_id")
     private Funeralhall funeralhall;
 
-
-
-    /*@OneToOne(mappedBy = "fh_request")
-    private Review review;*/
 
     private String pet_name;
 
@@ -36,20 +18,16 @@ public class Fh_Request {
     private String pet_species;
 
     private Date fh_date;
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private Users user;
 
+    private Long userId;
 
-    public Users getUser() {
-        return user;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setUser(Users user) {
-        this.user = user;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
-
-
 
     public Long getFhr_id() {
         return fhr_id;
@@ -66,24 +44,6 @@ public class Fh_Request {
 
     public void setFuneralhall(Funeralhall funeralhall) {
         this.funeralhall = funeralhall;
-    }
-
-    // review Getter 및 Setter
-    /*public Review getReview() {
-        return review;
-    }
-
-    public void setReview(Review review) {
-        this.review = review;
-    }*/
-
-    // status Getter 및 Setter
-    public FhRequestStatus getStatus() {
-        return status;
-    }
-
-    public void setStatus(FhRequestStatus status) {
-        this.status = status;
     }
 
     // pet_name Getter 및 Setter
@@ -121,6 +81,7 @@ public class Fh_Request {
     public void setFh_date(Date fh_date) {
         this.fh_date = fh_date;
     }
-
-
 }
+
+
+

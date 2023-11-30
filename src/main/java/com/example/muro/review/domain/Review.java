@@ -1,8 +1,8 @@
 package com.example.muro.review.domain;
 
-import com.example.muro.fh_request.domain.Fh_request;
+import com.example.muro.fh_request.domain.Fh_Request;
 import com.example.muro.funeralhall.domain.Funeralhall;
-import com.example.muro.user.domain.User;
+import com.example.muro.user.domain.Users;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -22,7 +22,7 @@ public class Review {
 
     @ManyToOne
     @JoinColumn(name = "fhrequest_id")
-    private Fh_request fh_request;
+    private Fh_Request fh_request;
 
     @ManyToOne
     @JoinColumn(name = "fh_id")
@@ -30,7 +30,7 @@ public class Review {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private User user;
+    private Users user;
 
     @NotBlank
     @Column(name = "review_text")
@@ -39,6 +39,4 @@ public class Review {
     @NotNull
     @Column(name = "startscore")
     private int startscore;
-
-    // ... (다른 필드 및 메소드)
 }

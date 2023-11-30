@@ -15,5 +15,5 @@ public class ReviewDto {
     private String reviewText;
     private int startscore;
 
-    // 생성자, 변환 메소드 등을 추가할 수 있습니다.
+
 }
