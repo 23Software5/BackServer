@@ -10,7 +10,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-@Entity(name = "RegularReview")
+@Entity(name = "Review")
 @Getter
 @Setter
 public class Review {
